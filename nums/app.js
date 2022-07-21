@@ -12,12 +12,17 @@ axios
 let multiNums = [11, 45, 15];
 axios
   .get(`${numbersURL}/${multiNums}?json`)
-  .then((data) => console.log(data))
+  .then(
+    (data) =>
+      //console.log(data)
+      (outputArea.innerHTML += `  <p>${data.data[11]}</p>
+        <p>${data.data[45]}</p>
+        <p>${data.data[15]}</p>`)
+  )
   .catch((err) => console.log(err));
 
 // Step 3
 let fourPromises = [];
-outputArea.innerHTML = `<h2>Step 3</h2>`;
 for (let i = 0; i < 4; i++) {
   fourPromises.push(axios.get(`${numbersURL}/random?json`));
 }
@@ -26,7 +31,7 @@ Promise.all(fourPromises)
     numsArr.forEach(
       (data) =>
         //console.log(data.data.text)
-        (outputArea.innerHTML += `  <li>${data.data.text}</li>`)
+        (outputArea.innerHTML += `  <p>${data.data.text}</p>`)
     )
   )
   .catch((err) => console.log(err));
