@@ -53,7 +53,6 @@ axios
   .catch((err) => console.log(err));
 
 button.onclick = function () {
-  alert('clicked!');
   axios
     .get(`${cardsURL}${deckId}/draw/`)
     .then((data) => {
@@ -61,33 +60,10 @@ button.onclick = function () {
       let angle = Math.random() * 90 - 45;
       let randomX = Math.random() * 40 - 20;
       let randomY = Math.random() * 40 - 20;
-      cardArea.innerHTML(
-        ('<img>',
-        {
-          src: cardSrc,
-          css: {
-            transform: `translate(${randomX}px, ${randomY}px) rotate(${angle}deg)`,
-          },
-        })
-      );
-      if (data.remaining === 0) button.style.display = 'none';
+      document.getElementById(
+        'cards'
+      ).innerHTML = `<img src="${cardSrc}" style="transform: translate(${randomX}px, ${randomY}px) rotate(${angle}deg); margin-top: 50px;" />`;
+      button.style.display = 'none';
     })
     .catch((err) => console.log(err));
 };
-/* $btn.on('click', function () {
-  $.getJSON(`${cardsURL}${deckId}/draw/`).then((data) => {
-    let cardSrc = data.cards[0].image;
-    let angle = Math.random() * 90 - 45;
-    let randomX = Math.random() * 40 - 20;
-    let randomY = Math.random() * 40 - 20;
-    $cardArea.append(
-      $('<img>', {
-        src: cardSrc,
-        css: {
-          transform: `translate(${randomX}px, ${randomY}px) rotate(${angle}deg)`,
-        },
-      })
-    );
-    if (data.remaining === 0) $btn.remove();
-  });
-}); */
