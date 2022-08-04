@@ -1,4 +1,4 @@
-# 31.2 JavaScript Promises
+# 31.2 | JavaScript Promises
 
 ## Part 1: Number Facts
 1. Make a request to the Numbers API ([http://numbersapi.com/](http://numbersapi.com/)) to get a
